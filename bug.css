@@ -1,0 +1,20 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there's a subtle error that can occur if you use `calc()` with multiple units without properly understanding the order of operations. For example:
+
+```css
+.element {
+  width: calc(100% - 20px);
+}
+```
+
+This is perfectly fine. However, consider this:
+
+```css
+.element {
+  width: calc(50% + 20px - 10%);
+}
+}
+```
+
+It might appear that the calculation is straightforward, but some browsers might interpret this differently.  The order of operations might not be what you expect. `%` values might be interpreted before the additions or subtractions.
+
+Another uncommon issue is with the use of `calc()` within `@media` queries, where unit conversions and unexpected rounding can lead to unexpected layout shifts.
